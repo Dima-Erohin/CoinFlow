@@ -1,0 +1,29 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Виртуальное окружение
+.venv/
+env/
+venv/
+ENV/
+
+# PyCharm
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VS Code (если вдруг используешь)
+.vscode/
+
+# Логи
+*.log
+
+# Файлы OS
+.DS_Store
+Thumbs.db
+
+.env

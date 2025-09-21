@@ -78,270 +78,190 @@
     }
   },
   {
-    "id": "b0426119-e452-4dcb-9f78-7f9d9f47cda5",
+    "id": "e8b35e80-2f17-4ef5-afa4-825bfc54d154",
     "user_id": "user_001",
-    "type": "card_transfer",
+    "type": "card_to_card",
     "gross": 100.0,
-    "net": 98.0,
-    "fee": 2.0,
+    "net": 96.8,
+    "fee": 3.2,
     "status": "failed",
-    "timestamp": "2025-09-21T12:37:06.301810",
+    "timestamp": "2025-09-21T14:12:09.198877",
     "metadata": {
       "from_card_id": "card_123456",
       "to_card_id": "card_789012"
     }
   },
   {
-    "id": "28bceb02-f768-4088-bf62-13f5e1bca3f8",
-    "user_id": "user_test",
-    "type": "card_transfer",
-    "gross": 10.0,
-    "net": 9.8,
-    "fee": 0.2,
+    "id": "f9406428-e4af-446b-b9dc-a0cf63eec605",
+    "user_id": "user_001",
+    "type": "stripe_deposit",
+    "gross": 50.0,
+    "net": 48.25,
+    "fee": 1.7500000000000002,
     "status": "failed",
-    "timestamp": "2025-09-21T12:37:06.385712",
+    "timestamp": "2025-09-21T14:12:10.584705",
+    "metadata": {
+      "amount": 50.0
+    }
+  },
+  {
+    "id": "c763051c-02ac-43fd-951b-322e5099b40f",
+    "user_id": "user_002",
+    "type": "stripe_deposit",
+    "gross": 25.0,
+    "net": 23.975,
+    "fee": 1.0250000000000001,
+    "status": "failed",
+    "timestamp": "2025-09-21T14:12:10.592745",
+    "metadata": {
+      "amount": 25.0
+    }
+  },
+  {
+    "id": "29021e37-c6cc-4e1e-9525-49079fc27f13",
+    "user_id": "user_test",
+    "type": "card_to_card",
+    "gross": 10.0,
+    "net": 9.41,
+    "fee": 0.5900000000000001,
+    "status": "failed",
+    "timestamp": "2025-09-21T14:12:11.211566",
     "metadata": {
       "from_card_id": "card_1",
       "to_card_id": "card_2"
     }
   },
   {
-    "id": "a5dcfb95-cf50-4a55-b308-56c2b2de7054",
-    "user_id": "user_001",
-    "type": "card_transfer",
-    "gross": 100.0,
-    "net": 98.0,
-    "fee": 2.0,
-    "status": "failed",
-    "timestamp": "2025-09-21T12:39:54.363478",
-    "metadata": {
-      "from_card_id": "card_123456",
-      "to_card_id": "card_789012"
-    }
-  },
-  {
-    "id": "a3066a99-edf1-4def-b94e-6b89844aa792",
-    "user_id": "user_001",
-    "type": "stripe_deposit",
-    "gross": 50.0,
-    "net": 48.25,
-    "fee": 1.7500000000000002,
-    "status": "pending",
-    "timestamp": "2025-09-21T12:39:55.160375",
-    "metadata": {
-      "amount": 50.0
-    }
-  },
-  {
-    "id": "9d2e154f-0ce3-4385-8ed2-f702271f1e66",
-    "user_id": "user_001",
-    "type": "card_transfer",
-    "gross": 100.0,
-    "net": 98.0,
-    "fee": 2.0,
-    "status": "failed",
-    "timestamp": "2025-09-21T12:45:18.460100",
-    "metadata": {
-      "from_card_id": "card_123456",
-      "to_card_id": "card_789012"
-    }
-  },
-  {
-    "id": "0c6994bf-40cc-4d58-b3ac-7622c9a7dc40",
-    "user_id": "user_001",
-    "type": "stripe_deposit",
-    "gross": 50.0,
-    "net": 48.25,
-    "fee": 1.7500000000000002,
-    "status": "failed",
-    "timestamp": "2025-09-21T12:45:19.214667",
-    "metadata": {
-      "amount": 50.0
-    }
-  },
-  {
-    "id": "71ec54a6-be99-4448-88f6-27a82804c079",
-    "user_id": "user_002",
-    "type": "stripe_deposit",
-    "gross": 25.0,
-    "net": 23.975,
-    "fee": 1.0250000000000001,
-    "status": "pending",
-    "timestamp": "2025-09-21T12:45:19.218671",
-    "metadata": {
-      "amount": 25.0
-    }
-  },
-  {
-    "id": "cbb40b51-7d41-4825-9c4f-e4a6b3abcca0",
-    "user_id": "user_001",
-    "type": "card_transfer",
-    "gross": 100.0,
-    "net": 98.0,
-    "fee": 2.0,
-    "status": "failed",
-    "timestamp": "2025-09-21T12:47:20.018355",
-    "metadata": {
-      "from_card_id": "card_123456",
-      "to_card_id": "card_789012"
-    }
-  },
-  {
-    "id": "f7bfc86e-a4cf-44c5-bfc7-814070fd289c",
-    "user_id": "user_001",
-    "type": "stripe_deposit",
-    "gross": 50.0,
-    "net": 48.25,
-    "fee": 1.7500000000000002,
-    "status": "pending",
-    "timestamp": "2025-09-21T12:47:20.783589",
-    "metadata": {
-      "amount": 50.0
-    }
-  },
-  {
-    "id": "dd3ee534-841b-4f0b-8bec-4482f1db5588",
-    "user_id": "user_001",
-    "type": "card_transfer",
-    "gross": 100.0,
-    "net": 98.0,
-    "fee": 2.0,
-    "status": "failed",
-    "timestamp": "2025-09-21T12:57:11.895875",
-    "metadata": {
-      "from_card_id": "card_123456",
-      "to_card_id": "card_789012"
-    }
-  },
-  {
-    "id": "f1608ce2-106e-40c6-9663-e2c59e7359dd",
-    "user_id": "user_001",
-    "type": "stripe_deposit",
-    "gross": 50.0,
-    "net": 48.25,
-    "fee": 1.7500000000000002,
-    "status": "failed",
-    "timestamp": "2025-09-21T12:57:12.529564",
-    "metadata": {
-      "amount": 50.0
-    }
-  },
-  {
-    "id": "375d090f-5bca-4923-a92e-62ed91e90bbb",
-    "user_id": "user_002",
-    "type": "stripe_deposit",
-    "gross": 25.0,
-    "net": 23.975,
-    "fee": 1.0250000000000001,
-    "status": "pending",
-    "timestamp": "2025-09-21T12:57:12.541550",
-    "metadata": {
-      "amount": 25.0
-    }
-  },
-  {
-    "id": "033cc049-0069-4030-b68a-e0dc0e3cd942",
-    "user_id": "user_001",
-    "type": "card_transfer",
-    "gross": 100.0,
-    "net": 98.0,
-    "fee": 2.0,
-    "status": "failed",
-    "timestamp": "2025-09-21T12:59:26.056488",
-    "metadata": {
-      "from_card_id": "card_123456",
-      "to_card_id": "card_789012"
-    }
-  },
-  {
-    "id": "a5a2f51c-ecad-4cf0-b7ca-927d9bb08839",
-    "user_id": "user_001",
-    "type": "stripe_deposit",
-    "gross": 50.0,
-    "net": 48.25,
-    "fee": 1.7500000000000002,
-    "status": "failed",
-    "timestamp": "2025-09-21T12:59:26.640130",
-    "metadata": {
-      "amount": 50.0
-    }
-  },
-  {
-    "id": "643991e7-112a-480d-981d-3d20e179a75f",
-    "user_id": "user_002",
-    "type": "stripe_deposit",
-    "gross": 25.0,
-    "net": 23.975,
-    "fee": 1.0250000000000001,
-    "status": "pending",
-    "timestamp": "2025-09-21T12:59:26.643166",
-    "metadata": {
-      "amount": 25.0
-    }
-  },
-  {
-    "id": "9a42ff76-6a49-4f02-acae-2f74a5a7d8bf",
-    "user_id": "user_001",
-    "type": "card_transfer",
-    "gross": 100.0,
-    "net": 98.0,
-    "fee": 2.0,
-    "status": "failed",
-    "timestamp": "2025-09-21T13:02:45.773382",
-    "metadata": {
-      "from_card_id": "card_123456",
-      "to_card_id": "card_789012"
-    }
-  },
-  {
-    "id": "a352a531-e7cf-4991-8ede-7be558538fc5",
-    "user_id": "user_001",
-    "type": "stripe_deposit",
-    "gross": 50.0,
-    "net": 48.25,
-    "fee": 1.7500000000000002,
-    "status": "failed",
-    "timestamp": "2025-09-21T13:02:46.278529",
-    "metadata": {
-      "amount": 50.0
-    }
-  },
-  {
-    "id": "131500f4-0110-419d-b120-17c957ccb653",
-    "user_id": "user_002",
-    "type": "stripe_deposit",
-    "gross": 25.0,
-    "net": 23.975,
-    "fee": 1.0250000000000001,
-    "status": "failed",
-    "timestamp": "2025-09-21T13:02:46.286535",
-    "metadata": {
-      "amount": 25.0
-    }
-  },
-  {
-    "id": "f920310d-6bac-475c-b4e3-76a713915141",
-    "user_id": "user_test",
-    "type": "card_transfer",
-    "gross": 10.0,
-    "net": 9.8,
-    "fee": 0.2,
-    "status": "failed",
-    "timestamp": "2025-09-21T13:02:47.687550",
-    "metadata": {
-      "from_card_id": "card_1",
-      "to_card_id": "card_2"
-    }
-  },
-  {
-    "id": "cc64be86-d8cd-49b4-905a-334a33f5138f",
+    "id": "809e8126-056a-44b4-897a-b84c128fcbd2",
     "user_id": "user_test",
     "type": "stripe_deposit",
     "gross": 10.0,
     "net": 9.41,
     "fee": 0.5900000000000001,
     "status": "failed",
-    "timestamp": "2025-09-21T13:02:48.331501",
+    "timestamp": "2025-09-21T14:12:11.488226",
+    "metadata": {
+      "amount": 10.0
+    }
+  },
+  {
+    "id": "30a317ec-f723-4af9-a6dd-3d750b548fc3",
+    "user_id": "user_001",
+    "type": "card_to_card",
+    "gross": 100.0,
+    "net": 100.0,
+    "fee": 0.0,
+    "status": "failed",
+    "timestamp": "2025-09-21T15:13:18.571906",
+    "metadata": null
+  },
+  {
+    "id": "9ff77e1c-625f-44f7-8061-4561158d12ae",
+    "user_id": "user_001",
+    "type": "stripe_deposit",
+    "gross": 50.0,
+    "net": 48.25,
+    "fee": 1.7500000000000002,
+    "status": "pending",
+    "timestamp": "2025-09-21T15:13:18.578046",
+    "metadata": {
+      "amount": 50.0
+    }
+  },
+  {
+    "id": "b9b7e52e-0353-4118-a4d0-a87d529b233d",
+    "user_id": "user_002",
+    "type": "stripe_deposit",
+    "gross": 25.0,
+    "net": 23.975,
+    "fee": 1.0250000000000001,
+    "status": "pending",
+    "timestamp": "2025-09-21T15:13:19.065475",
+    "metadata": {
+      "amount": 25.0
+    }
+  },
+  {
+    "id": "5e5b5c7d-5597-4cd9-b83a-0982d3d8f250",
+    "user_id": "user_001",
+    "type": "card_to_card",
+    "gross": 100.0,
+    "net": 100.0,
+    "fee": 0.0,
+    "status": "failed",
+    "timestamp": "2025-09-21T15:13:19.914872",
+    "metadata": null
+  },
+  {
+    "id": "12910697-ad69-4d11-93bb-a0a2a5b5f653",
+    "user_id": "user_test",
+    "type": "stripe_deposit",
+    "gross": 10.0,
+    "net": 9.41,
+    "fee": 0.5900000000000001,
+    "status": "pending",
+    "timestamp": "2025-09-21T15:13:19.921834",
+    "metadata": {
+      "amount": 10.0
+    }
+  },
+  {
+    "id": "2c89d4b5-f454-43fe-af07-15937f9e8882",
+    "user_id": "user_001",
+    "type": "card_to_card",
+    "gross": 100.0,
+    "net": 100.0,
+    "fee": 0.0,
+    "status": "completed",
+    "timestamp": "2025-09-21T15:14:20.392594",
+    "metadata": null
+  },
+  {
+    "id": "288e4b37-bf52-4ea5-a0eb-029b0febd875",
+    "user_id": "user_001",
+    "type": "stripe_deposit",
+    "gross": 50.0,
+    "net": 48.25,
+    "fee": 1.7500000000000002,
+    "status": "pending",
+    "timestamp": "2025-09-21T15:14:20.394557",
+    "metadata": {
+      "amount": 50.0
+    }
+  },
+  {
+    "id": "ba3bf447-ce1e-455d-9790-659e7f589c27",
+    "user_id": "user_002",
+    "type": "stripe_deposit",
+    "gross": 25.0,
+    "net": 23.975,
+    "fee": 1.0250000000000001,
+    "status": "pending",
+    "timestamp": "2025-09-21T15:14:20.798195",
+    "metadata": {
+      "amount": 25.0
+    }
+  },
+  {
+    "id": "e2f2bc04-f6a6-4fe5-bf05-e9763c2a8e11",
+    "user_id": "user_001",
+    "type": "card_to_card",
+    "gross": 100.0,
+    "net": 100.0,
+    "fee": 0.0,
+    "status": "completed",
+    "timestamp": "2025-09-21T15:14:21.740855",
+    "metadata": null
+  },
+  {
+    "id": "17b71249-689c-4e89-9c45-0a8e8bb537ed",
+    "user_id": "user_test",
+    "type": "stripe_deposit",
+    "gross": 10.0,
+    "net": 9.41,
+    "fee": 0.5900000000000001,
+    "status": "pending",
+    "timestamp": "2025-09-21T15:14:21.744811",
     "metadata": {
       "amount": 10.0
     }

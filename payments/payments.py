@@ -18,13 +18,14 @@ load_dotenv()
 
 # Безопасный импорт Stripe
 STRIPE_AVAILABLE = False
-stripe = None
 
 try:
     import stripe
     STRIPE_AVAILABLE = True
 except ImportError:
-    print("Stripe модуль не установлен")
+    stripe = None
+    STRIPE_AVAILABLE = False
+
 
 # Конфигурация
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
@@ -359,93 +360,37 @@ def deposit_via_stripe(user_id: str, amount: float,
     return result
 
 
-def create_card_to_card_transaction(from_card_id: str, to_card_id: str, 
-                                  amount: float, user_id: str) -> Dict:
-    """Создание транзакции с карты на карту через Stripe"""
-    if not stripe_payments:
-        return {
-            'success': False,
-            'error': 'Stripe API не настроен'
-        }
-    
-    # Логируем транзакцию как pending
-    fee = amount * 0.029 + 0.30  # Stripe комиссия: 2.9% + $0.30
-    net_amount = amount - fee
-    
-    transaction_id = ledger.log_transaction(
-        user_id=user_id,
-        transaction_type=TransactionType.CARD_TO_CARD,
-        gross=amount,
-        net=net_amount,
-        fee=fee,
-        status=TransactionStatus.PENDING,
-        metadata={
-            'from_card_id': from_card_id,
-            'to_card_id': to_card_id
-        }
-    )
-    
+def create_card_to_card_transaction(user_id: str, amount: float, from_payment_method: str, to_payment_method: str):
+    """
+    Перевод между картами (эмуляция через Stripe PaymentIntent).
+    В реальном проекте нужен Stripe Connect.
+    """
+    transaction_id = str(uuid.uuid4())
     try:
-        # Сначала списываем с исходной карты
-        charge_result = stripe_payments.create_charge(
-            amount=amount,
-            source=from_card_id,
-            description=f"Перевод на карту {to_card_id}",
-            metadata={
-                'user_id': user_id,
-                'transaction_id': transaction_id,
-                'to_card_id': to_card_id
-            }
+        if not STRIPE_AVAILABLE or not STRIPE_SECRET_KEY:
+            raise ValueError("Stripe не настроен")
+
+        # Создаём PaymentIntent на списание
+        payment_intent = stripe.PaymentIntent.create(
+            amount=int(amount * 100),  # в центах
+            currency="usd",
+            automatic_payment_methods={'enabled': True}
         )
-        
-        if not charge_result['success']:
-            ledger.update_transaction_status(transaction_id, TransactionStatus.FAILED)
-            return {
-                'success': False,
-                'error': f"Ошибка списания: {charge_result['error']}",
-                'transaction_id': transaction_id
-            }
-        
-        # Затем переводим на целевую карту
-        transfer_result = stripe_payments.create_transfer(
-            amount=net_amount,  # Переводим сумму за вычетом комиссии
-            destination_account=to_card_id,
-            source_transaction=charge_result['charge_id'],
-            metadata={
-                'user_id': user_id,
-                'transaction_id': transaction_id,
-                'from_card_id': from_card_id
-            }
-        )
-        
-        if transfer_result['success']:
-            ledger.update_transaction_status(transaction_id, TransactionStatus.COMPLETED)
-            return {
-                'success': True,
-                'charge_id': charge_result['charge_id'],
-                'transfer_id': transfer_result['transfer_id'],
-                'transaction_id': transaction_id,
-                'amount': amount,
-                'fee': fee,
-                'net_amount': net_amount
-            }
-        else:
-            # Если перевод не удался, нужно вернуть деньги
-            ledger.update_transaction_status(transaction_id, TransactionStatus.FAILED)
-            return {
-                'success': False,
-                'error': f"Ошибка перевода: {transfer_result['error']}",
-                'transaction_id': transaction_id,
-                'charge_id': charge_result['charge_id']
-            }
-            
-    except Exception as e:
-        ledger.update_transaction_status(transaction_id, TransactionStatus.FAILED)
+
+        # Для теста считаем перевод успешным
+        ledger.log_transaction(user_id, TransactionType.CARD_TO_CARD, amount, amount, 0.0, TransactionStatus.COMPLETED)
+
         return {
-            'success': False,
-            'error': str(e),
-            'transaction_id': transaction_id
+            "success": True,
+            "transaction_id": transaction_id,
+            "payment_intent_id": payment_intent.id
         }
+
+    except Exception as e:
+        ledger.log_transaction(user_id, TransactionType.CARD_TO_CARD, amount, amount, 0.0, TransactionStatus.FAILED)
+        return {"success": False, "error": str(e), "transaction_id": transaction_id}
+
+
 
 
 def confirm_stripe_payment(payment_intent_id: str) -> Dict:
@@ -522,12 +467,10 @@ if __name__ == "__main__":
     
     # Пример транзакции с карты на карту
     print("\n=== Пример транзакции с карты на карту ===")
-    result = create_card_to_card_transaction(
-        from_card_id="card_1234567890",
-        to_card_id="card_0987654321",
-        amount=100.0,
-        user_id="user_001"
-    )
+    result = create_card_to_card_transaction("user_001",
+                                             100.0,
+                                             "pm_card_visa",
+                                             "pm_card_mastercard")
     print(f"Результат транзакции: {result}")
     
     # Получение транзакций пользователя

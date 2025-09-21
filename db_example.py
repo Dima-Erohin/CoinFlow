@@ -165,3 +165,4 @@ if __name__ == "__main__":
     # Запуск тестов обработки ошибок
     asyncio.run(test_error_handling())
 
+

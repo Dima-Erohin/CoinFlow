@@ -272,3 +272,4 @@ async def get_user_endpoint(user_id: int):
     return await get_user(user_id)
 ```
 
+

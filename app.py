@@ -9,6 +9,7 @@ from pydantic import BaseModel, EmailStr
 from typing import Optional, List
 import logging
 import db
+from payments_api import payments_router
 
 
 logging.basicConfig(level=logging.INFO)
@@ -19,6 +20,9 @@ app = FastAPI(
     description="API для управления пользователями и их суб-аккаунтами",
     version="1.0.0"
 )
+
+# Подключаем роутер для платежей
+app.include_router(payments_router)
 
 # Pydantic модели для валидации данных
 class UserCreate(BaseModel):
@@ -83,14 +87,25 @@ async def runtime_error_handler(request, exc):
 async def root():
     """Корневой эндпоинт с информацией об API"""
     return {
-        "message": "User Management API",
+        "message": "User Management & Payments API",
         "version": "1.0.0",
         "endpoints": {
-            "GET /users": "Получить всех пользователей",
-            "GET /users/{user_id}": "Получить пользователя по ID",
-            "POST /users": "Создать нового пользователя",
-            "PUT /users/{user_id}/sub-accounts": "Добавить суб-аккаунт",
-            "PUT /users/{user_id}/email": "Обновить email пользователя"
+            "user_management": {
+                "GET /users": "Получить всех пользователей",
+                "GET /users/{user_id}": "Получить пользователя по ID",
+                "POST /users": "Создать нового пользователя",
+                "PUT /users/{user_id}/sub-accounts": "Добавить суб-аккаунт",
+                "PUT /users/{user_id}/email": "Обновить email пользователя"
+            },
+            "payments": {
+                "POST /payments/card-to-card/{user_id}": "Перевод с карты на карту",
+                "POST /payments/deposit/{user_id}": "Пополнение баланса",
+                "GET /payments/transactions/{user_id}": "Получить транзакции пользователя",
+                "GET /payments/balance/{user_id}": "Получить баланс пользователя",
+                "POST /payments/confirm": "Подтвердить платеж",
+                "GET /payments/stats/{user_id}": "Статистика платежей",
+                "GET /payments/health": "Проверка состояния платежной системы"
+            }
         }
     }
 
